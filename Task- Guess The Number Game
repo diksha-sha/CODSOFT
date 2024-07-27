@@ -1,0 +1,71 @@
+#include <iostream>
+#include <cstdlib>
+#include <ctime>
+
+using namespace std;
+
+int main() {
+    cout << "\n\t\t\tWelcome to the GuessTheNumber Game!\n";
+    cout << "Guess the number between 1 and 100. You'll have a limited number of attempts based on your chosen difficulty level. Good luck!\n";
+
+    while (true) {
+        cout << "\nSelect a difficulty level:\n";
+        cout << "1 - Easy (10 attempts)\n";
+        cout << "2 - Medium (7 attempts)\n";
+        cout << "3 - Hard (5 attempts)\n";
+        cout << "0 - Exit the game\n";
+        cout << "Enter your choice: ";
+
+        int difficulty;
+        cin >> difficulty;
+
+        if (difficulty == 0) {
+            cout << "Thanks for playing! Goodbye!\n";
+            break;
+        }
+
+        srand(time(0));
+        int secretNumber = 1 + rand() % 100;
+        int attempts;
+        switch (difficulty) {
+            case 1:
+                attempts = 10;
+                break;
+            case 2:
+                attempts = 7;
+                break;
+            case 3:
+                attempts = 5;
+                break;
+            default:
+                cout << "Invalid choice. Please enter a valid difficulty level.\n";
+                continue;
+        }
+
+        for (int i = 0; i < attempts; i++) {
+            int guess;
+            cout << "\nAttempt " << i + 1 << " of " << attempts << ": Enter your guess: ";
+            cin >> guess;
+
+            if (guess == secretNumber) {
+                cout << "Congratulations! You've guessed the number: " << secretNumber << "\n";
+                break;
+            } else {
+                cout << "Incorrect guess. ";
+                if (guess > secretNumber) {
+                    cout << "The secret number is smaller than " << guess << ".\n";
+                } else {
+                    cout << "The secret number is larger than " << guess << ".\n";
+                }
+
+                if (i == attempts - 1) {
+                    cout << "You've run out of attempts. The secret number was: " << secretNumber << ". Better luck next time!\n";
+                } else {
+                    cout << "You have " << attempts - i - 1 << " attempts left.\n";
+                }
+            }
+        }
+    }
+
+    return 0;
+}

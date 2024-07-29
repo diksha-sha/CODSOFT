@@ -8,7 +8,7 @@ int main()
     char operation;
     double num1, num2;
 
-    cout << "\n\t\t\t\tHey! Welcome To The Simple Calculator Setup\n";
+    cout << "\n\t\t\t\t Hey! Welcome To The Simple Calculator Setup\n";
     cout << "\nEnter first number: ";
     cin >> num1;
     cout << "\nEnter second number: ";
